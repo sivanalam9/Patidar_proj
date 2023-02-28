@@ -1,0 +1,202 @@
+<div class="row-header">
+
+    <div class="column-header">
+        <img src="assets/images/icon2.jpg" alt="logo" style="float: left;">
+    </div>
+
+    <div class="column-header">
+        <h1 class="mainHeader">PATIDAR TIMBERS</h1>
+    </div>
+
+    <div class="column-header">
+        <img src="assets/images/icon2.jpg" alt="logo" style="float: right;">
+    </div>
+
+</div>
+<h4 class="subHeader">ESTIMATION</h4>
+<form #invoiceForm="ngForm">
+    <div class="container-fluid pt-2 mb-5">
+        <div>
+            <div class="col-md-18">
+                <div class="card border-secondary">
+                    <div class="card-body">
+                        <table class="table1">
+                            <tr>
+                                <th>Sl no</th>
+                                <td><input type="text" style="width: 50px;"></td>
+                                <td><input type="text" style="width: 50px;"></td>
+                                <td></td>
+
+                                <th><label for="date">Date</label></th>
+                                <td><input type="date" style="width: 100%;" class="form-control" name="date" id="date"
+                                    [ngClass]="{'is-invalid': invoiceForm.submitted && date.invalid}"
+                                    [(ngModel)]="invoice.date" #date="ngModel" required></td>
+                                <td></td>
+                                
+                                <th><label for="name">Name</label></th>
+                                <td><input type="text" style="width: 100%;" class="form-control" name="name" id="name"
+                                    [ngClass]="{'is-invalid': invoiceForm.submitted && CustName.invalid}"
+                                    [(ngModel)]="invoice.customerName" #CustName="ngModel" required></td>
+                                <td></td>
+
+                                <th><label for="address">Address</label></th>
+                                <td><input type="text" style="width: 100%;" class="form-control" name="address" id="address"
+                                    [ngClass]="{'is-invalid': invoiceForm.submitted && Address.invalid}"
+                                    [(ngModel)]="invoice.address" #Address="ngModel" required></td>
+                                <td><input type="checkbox" style="margin-left: 43%;
+                                    height: 23px;
+                                    width: 100%;"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card border-secondary mt-2" >
+                    <div class="card-body">
+                        <h4 class="card-title d-flex justify-content-between">Order Details <button type="button"
+                                class="btn btn-secondary" (click)="addProduct()">New</button></h4>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="5%" style="text-align: center;">No.</th>
+                                        <th width="10%" style="text-align: center;">Wood</th>
+                                        <th width="10%" style="text-align: center;">Breadth</th>
+                                        <th width="10%" style="text-align: center;">Width</th>
+                                        <th width="10%" style="text-align: center;">Length</th>
+                                        <th width="10%" style="text-align: center;">Numbers</th>
+                                        <th width="10%" style="text-align: center;">Rate</th>
+                                        <th width="10%" style="text-align: center;">Below 6 CFT</th>
+                                        <th width="10%" style="text-align: center;">Above 5 CFT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of invoice.products; let i=index">
+                                        <td scope="row" >
+                                            <input type="text" width="5%" class="form-control" name="sNo{{i}}"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && SNo.invalid}"
+                                                id="sNo" [(ngModel)]="product.sNo" #SNo="ngModel"
+                                                required>
+                                        </td>
+                                        <td scope="row">
+                                            <input type="text" class="form-control" name="productName{{i}}"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductName.invalid}"
+                                                id="productName" [(ngModel)]="product.name" #ProductName="ngModel"
+                                                required>
+                                        </td>
+                                        <td scope="row">
+                                            <input type="text" class="form-control" name="productBreadth{{i}}"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductBreadth.invalid}"
+                                                id="productBreadth" [(ngModel)]="product.numBreadth" #ProductBreadth="ngModel"
+                                                required>
+                                        </td>
+                                        <td scope="row">
+                                            <input type="text" class="form-control" name="productWidth{{i}}"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && productWidth.invalid}"
+                                                id="productWidth" [(ngModel)]="product.numWidth" #productWidth="ngModel"
+                                                required>
+                                        </td>
+                                        <td scope="row">
+                                            <input type="text" class="form-control" name="productLength{{i}}"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductLength.invalid}"
+                                                id="productLength" [(ngModel)]="product.numLength" #ProductLength="ngModel"
+                                                required>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" name="quantity{{i}}" id="quantity"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductQty.invalid}"
+                                                [(ngModel)]="product.qty" #ProductQty="ngModel" required>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" name="price{{i}}" id="price"
+                                                [ngClass]="{'is-invalid': invoiceForm.submitted && ProductPrice.invalid}"
+                                                [(ngModel)]="product.price" #ProductPrice="ngModel" required>
+                                        </td>
+                                        <td >
+                                            <label *ngIf = "product.numBreadth < 6">{{product.numBreadth * product.numWidth * product.numLength * product.qty/144 || ''}}</label>
+                                        </td>
+                                        <td >
+                                            <label *ngIf = "product.numBreadth > 5">{{product.numBreadth * product.numWidth * product.numLength * product.qty/144 || ''}}</label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>  
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="div">
+                        <button type="button" class="btn btn-secondary btn-block"
+                            (click)="invoiceForm.valid ? generatePDF('download') : ''">Download Invoice</button>
+                        <button type="button" class="btn btn-secondary btn-block"
+                            (click)="invoiceForm.valid ? generatePDF('print') : ''">Print
+                            Invoice</button>
+                        <button type="submit" class="btn btn-secondary btn-block"
+                            (click)="invoiceForm.valid ? generatePDF() : ''">Open
+                            Invoice</button>
+                    </div>
+                    <div class="tablecss" >
+                        <table class="finalValues">
+                            <tr>
+                                <th>CFT TOTAL</th>
+                                <td><input type="text" style="color: green;"></td>
+                                <td><input type="text" style="color: green;"></td>
+                            </tr>
+                            <tr>
+                                <th>CFT VALUE</th>
+                                <td><input type="text" style="color: blue;"></td>
+                                <td><input type="text" style="color: blue;"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><b>SUB TOTAL</b></td>
+                                <td><input type="text" style="color: green;"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><b>VAT @</b>
+                                    <input type="text" class="vat"> </td>
+                                <td><input type="text" style="color: orange;" readonly></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><b>OTHER AMOUNT</b></td>
+                                <td><input type="text" style="color: green;"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><b>GSTIN</b></td>
+                                <td><input type="text" style="color: blue;"></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td><b>NET TOTAL</b></td>
+                                <td><input type="text" style="color: green;"></td>
+                            </tr>                   
+                        </table>         
+                    </div>
+                </div>
+                
+            </div>
+            <!-- <div class="row">
+                <button type="button" class="btn btn-secondary btn-lg btn-block"
+                    (click)="invoiceForm.valid ? generatePDF('download') : ''">Download Invoice</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block"
+                    (click)="invoiceForm.valid ? generatePDF('print') : ''">Print
+                    Invoice</button>
+                <button type="submit" class="btn btn-secondary btn-lg btn-block"
+                    (click)="invoiceForm.valid ? generatePDF() : ''">Open
+                    Invoice</button>
+            </div> -->
+        </div>
+    </div>
+</form>
+<footer class="fixed-bottom">
+    <!-- <div class="bg-light text-center p-2">
+        <h6>Made with 💗 by
+            <a class="twitter-follow-button" href="https://twitter.com/ankit_ngdevelop" target="_blank"> <i class="fa fa-twitter"
+                    aria-hidden="true"></i>Ankit_NgDevelop</a>.
+        </h6>
+    </div> -->
+</footer>

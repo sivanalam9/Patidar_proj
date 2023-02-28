@@ -1,0 +1,183 @@
+.table1{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+.mainHeader{
+    text-align: center;
+    color: red;
+}
+.subHeader{
+    text-align: center;
+}
+.table2{
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    font-size: large;
+    table-layout: fixed;
+}
+.table2 tr{
+    border-right: 1px solid black ;
+    border-bottom: 1px solid black ;
+}
+.head{
+    border-right: 1px solid black ;
+    border-bottom: 1px solid black ;
+}
+.button{
+    margin-right: 10px;
+    cursor: pointer;
+}
+input[type=number]{
+    text-align: right;
+    color: blue;
+    width:95%;
+    height:25px;
+    border-right:2px solid black;
+}
+
+.finalValues{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    text-align: right;
+}
+.tablecss{
+    float: right;
+}
+.vat{
+    width: 113px;
+    border: none;
+    background-color: whitesmoke;
+    color: blue;
+    text-align: right;
+}
+
+.row{
+    display: flex;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+}
+.column{
+    width: 25%;
+    text-align: center;
+}
+
+.column1{
+    width: 50%;
+}
+
+.subColumn1{
+    height: 45%;
+}
+.panel{
+   float: right;
+   margin-right: 16px;
+   cursor: pointer;
+}
+i{
+    padding: 5px;
+}
+button{
+    border: none;
+    padding: 8px;
+    background-color: gainsboro;
+    cursor: pointer;
+}
+.inline-button{
+    padding: 4px;
+}
+
+.table-button{
+    margin-left: 32px;
+}
+.data-table{
+    width: 100%;
+    height: 250px;
+    overflow: auto;
+    border: 1;
+}
+.data{
+    overflow-y: scroll;
+}
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+    margin: auto;
+    padding: 2rem;
+}
+body::before{
+    opacity: .6;
+}
+.button-panel-column{
+    min-width: 20%;
+}
+
+.button-panel-column1{
+    min-width: 80%;
+}
+.button-panel-row{
+    height: 50px;
+    display: flex;
+    padding: 4px;
+    width: auto;
+    height: auto;
+}
+
+.data-table th{
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+body{
+    background-color: beige;
+}
+.initial-panel th{
+    font-size: large;
+}
+
+.row-header{
+    display: flex;
+}
+  
+.column-header{
+    width: 50%;
+    height: auto;
+}
+
+img{
+    width: 17%;
+}
+
+.sequence{
+    text-align: center;
+    width: -webkit-fill-available;
+    height: 25px;
+    border: 2px solid black;
+}
+
+.checkbox{
+    display: flex;
+    margin: auto;
+}
+
+.table-data{
+    border: 2px solid black;
+    background-color: white;
+}
+
+input{
+    font-size: medium;
+}
+
+.data-input{
+    width:95%;
+    height:25px;
+    border-right:2px solid black
+}
